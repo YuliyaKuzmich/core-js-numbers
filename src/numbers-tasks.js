@@ -310,8 +310,10 @@ function getSumToN(n) {
  */
 function getSumOfDigits(num) {
   let sum = 0;
-  while (num > 0) {
-    sum = (num % 10) + sum + parseInt(num / 10, 10);
+  let remainingNum = num;
+  while (remainingNum > 0) {
+    sum += remainingNum % 10;
+    remainingNum = Math.floor(remainingNum / 10);
   }
   return sum;
 }
@@ -328,10 +330,10 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  if (num % 2 === 0) {
-    return true;
+  if (num <= 0) {
+    return false;
   }
-  return false;
+  return Math.log2(num) % 1 === 0;
 }
 
 /**
@@ -359,8 +361,8 @@ function getSine(num) {
  * 255, 16 => 'ff'
  * 2, 2    => '10'
  */
-function numberToStringInBase(/* number, base */) {
-  throw new Error('Not implemented');
+function numberToStringInBase(number, base) {
+  return number.toString(base);
 }
 
 /**
@@ -373,8 +375,8 @@ function numberToStringInBase(/* number, base */) {
  * @example:
  * 12345, 2    => '1.23e+4'
  */
-function toExponential(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toExponential(number, fractionDigits) {
+  return number.toExponential(fractionDigits);
 }
 
 /**
@@ -388,8 +390,8 @@ function toExponential(/* number, fractionDigits */) {
  * 12345, 2    => '12345.00'
  * 12.345, 1   => '12.3'
  */
-function toFixed(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toFixed(number, fractionDigits) {
+  return number.toFixed(fractionDigits);
 }
 
 /**
@@ -404,8 +406,8 @@ function toFixed(/* number, fractionDigits */) {
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
  */
-function toPrecision(/* number, precision */) {
-  throw new Error('Not implemented');
+function toPrecision(number, precision) {
+  return number.toPrecision(precision);
 }
 
 /**
